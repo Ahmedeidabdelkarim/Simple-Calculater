@@ -2,7 +2,7 @@ let displayBox = document.querySelector(".display");
 
 function showDisplay(event) {
     const x = event.target.innerText;
-    if (displayBox.innerHTML == 0) {
+    if (displayBox.innerHTML == 0 || displayBox.innerHTML == "error syntax") {
         return displayBox.innerHTML = x;
     }
     return displayBox.innerHTML += x;
@@ -17,10 +17,10 @@ function calculate() {
         displayBox.innerText = formattedResult;
     } catch (error) {
         displayBox.innerText = "error syntax";
-        // Hide the error message after 2 seconds
+        /* // Hide the error message after 2 seconds
         setTimeout(() => {
             displayBox.innerText = 0;
-        }, 2000);
+        }, 2000); */
     }
 }
 

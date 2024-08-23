@@ -10,8 +10,19 @@ function showDisplay(event) {
 
 function calculate() {
     let result = displayBox.innerText;
-    displayBox.innerText = eval(result);
-};
+    try {
+        let evaluatedResult = eval(result);
+        // Limit the result to 10 digits
+        let formattedResult = parseFloat(evaluatedResult.toPrecision(10));
+        displayBox.innerText = formattedResult;
+    } catch (error) {
+        displayBox.innerText = "error syntax";
+        // Hide the error message after 2 seconds
+        setTimeout(() => {
+            displayBox.innerText = 0;
+        }, 2000);
+    }
+}
 
 function allClear() {
     displayBox.innerText = 0;
